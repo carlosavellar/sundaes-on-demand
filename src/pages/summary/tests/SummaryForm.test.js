@@ -28,8 +28,16 @@ describe('Checkbox', () => {
   });
 });
 
-describe('Popup responds t hover', () => {
-  const nullPopup = screen.queryByText(/no ice cream will actually be delivered/i);
+test('Popup responds on hover', async () => {
+  const user = userEvent.setup();
+  render(<SummaryForm />);
 
-  expect(nullPopup).not.toBeInTheDocument();
+  const textTerms = screen.queryByText(/terms and conditions/i);
+  await user.hover(textTerms);
+
+  const popover = screen.queryByText(/no ice cream will actually be delivered/i);
+  expect(popover).toBeInTheDocument();
+
+  await user.unhover(textTerms);
+  expect(popover).not.toBeInTheDocument();
 });
