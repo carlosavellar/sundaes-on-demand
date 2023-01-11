@@ -29,7 +29,7 @@ describe('Checkbox', () => {
 });
 
 describe('Popup responds t hover', () => {
-  const nullPopup = queryByText(/no ice cream will actually be delivered/i);
+  const nullPopup = screen.queryByText(/no ice cream will actually be delivered/i);
 
   expect(nullPopup).not.toBeInTheDocument();
 });

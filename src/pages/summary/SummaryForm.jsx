@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Popover from 'react-bootstrap/Popover';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 
 export default function SummaryForm() {
@@ -23,6 +24,7 @@ export default function SummaryForm() {
       </OverlayTrigger>
     </span>
   );
+
   return (
     <Container>
       <Row>
