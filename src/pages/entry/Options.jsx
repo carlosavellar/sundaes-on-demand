@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import ScoopOptions from './ScoopOptions';
+import ToopingOption from './ToopingOption';
 import { Row } from 'react-bootstrap';
 import axios from 'axios';
 
@@ -16,7 +17,7 @@ export default Options = ({ optionType }) => {
         console.log(err.message, '🆙');
       });
   }, [optionType]);
-  const ItemComponent = optionType === 'scoops' ? ScoopOptions : null;
+  const ItemComponent = optionType === 'scoops' ? ScoopOptions : ToopingOption;
   const optionItems = items.map((item) => (
     <ItemComponent key={item.name} name={item.name} imagePath={item.imagePath} />
   ));

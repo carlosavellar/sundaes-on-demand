@@ -1,7 +1,6 @@
 import { screen, render } from '@testing-library/react';
-import { server } from '../../../mocks/server';
 import Options from '../Options';
-import { rest } from 'msw';
+import ToopingOption from '../ToopingOption';
 import { act } from 'react-dom/test-utils';
 
 test('Teste image', async () => {
@@ -22,9 +21,18 @@ test('Teste image', async () => {
     if (!scoopImages) {
       return 'anonimous 😻';
     }
-
     expect(scoopImages).toHaveLength(2);
     const scoopAlt = scoopImages.map((element) => element.alt);
     expect(scoopAlt).toEqual(['Chocolate scoop', 'Vanilla scoop']);
+  });
+});
+
+test('Display images for each tooping option from a server', async () => {
+  act(() => {
+    render(<Options optionType="toopings" />);
+  });
+  const toopingImages = await screen.findAllByRole('img', { name: /tooping$/i });
+  act(() => {
+    expect(toopingImages).toHaveLength(3);
   });
 });
